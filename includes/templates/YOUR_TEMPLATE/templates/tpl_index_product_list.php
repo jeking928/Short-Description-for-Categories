@@ -6,10 +6,10 @@
  * Displays product-listing when a particular category/subcategory is selected for browsing
  *
  * @package templateSystem
- * @copyright Copyright 2003-2006 Zen Cart Development Team
+ * @copyright Copyright 2003-2010 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: tpl_index_product_list.php 5369 2006-12-23 10:55:52Z drbyte $
+ * @version $Id: tpl_index_product_list.php 15589 2010-02-27 15:03:49Z ajeh $
  */
 ?>
 <div class="centerColumn" id="indexProductList">
@@ -31,7 +31,7 @@ if (PRODUCT_LIST_CATEGORIES_IMAGE_STATUS == 'true') {
 // categories_description
     if ($current_categories_description != '') {
 ?>
-<div id="indexProductListCatDescription" class="content"><?php echo $current_categories_description . '</div>';
+<div id="indexProductListCatDescription" class="content"><?php echo $current_categories_description;  ?></div>
 }
 
 if ($current_categories_description_sub != '') {
@@ -39,7 +39,6 @@ if ($current_categories_description_sub != '') {
  
    
 ?> 
-
 <?php } // categories_description ?>
 <br class="clearBoth" />
 
@@ -47,8 +46,8 @@ if ($current_categories_description_sub != '') {
   $check_for_alpha = $listing_sql;
   $check_for_alpha = $db->Execute($check_for_alpha);
 
-  if ($check_for_alpha->RecordCount() > 0 && PRODUCT_LIST_ALPHA_SORTER == 'true') {
-  $form = zen_draw_form('filter', zen_href_link(FILENAME_DEFAULT), 'get') . '<label class="inputLabel">' . TEXT_SHOW . '</label>';
+  if ($do_filter_list || ($check_for_alpha->RecordCount() > 0 && PRODUCT_LIST_ALPHA_SORTER == 'true')) {
+  $form = zen_draw_form('filter', zen_href_link(FILENAME_DEFAULT), 'get') . '<label class="inputLabel">' .TEXT_SHOW . '</label>';
 ?>
 
 <?php
@@ -64,6 +63,12 @@ if ($current_categories_description_sub != '') {
     // draw manufacturers_id
     echo zen_draw_hidden_field($get_option_variable, $_GET[$get_option_variable]);
   }
+
+  // draw music_genre_id
+  if (isset($_GET['music_genre_id']) && $_GET['music_genre_id'] != '') echo zen_draw_hidden_field('music_genre_id', $_GET['music_genre_id']);
+
+  // draw record_company_id
+  if (isset($_GET['record_company_id']) && $_GET['record_company_id'] != '') echo zen_draw_hidden_field('record_company_id', $_GET['record_company_id']);
 
   // draw typefilter
   if (isset($_GET['typefilter']) && $_GET['typefilter'] != '') echo zen_draw_hidden_field('typefilter', $_GET['typefilter']);
@@ -89,7 +94,6 @@ if ($current_categories_description_sub != '') {
   }
 ?>
 <br class="clearBoth" />
-
 
 <?php
 /**

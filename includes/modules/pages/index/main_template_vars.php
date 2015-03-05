@@ -3,10 +3,10 @@
  * index main_template_vars.php
  *
  * @package page
- * @copyright Copyright 2003-2011 Zen Cart Development Team
+ * @copyright Copyright 2003-2012 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: main_template_vars.php 18695 2011-05-04 05:24:19Z drbyte $
+ * @version GIT: $Id: Author: Ian Wilson  Tue Oct 29 00:05:45 2013 +0000 Modified in v1.5.2 $
  */
 
 // This should be first line of the script:
@@ -68,8 +68,8 @@ if ($category_depth == 'nested')
           AND        cd.language_id = :languagesID
           AND        c.categories_status= '1'";
 
-  $sql = $db->bindVars($sql, ':categoriesID', $current_category_id, 'integer'); 
-  $sql = $db->bindVars($sql, ':languagesID', $_SESSION['languages_id'], 'integer'); 
+  $sql = $db->bindVars($sql, ':categoriesID', $current_category_id, 'integer');
+  $sql = $db->bindVars($sql, ':languagesID', $_SESSION['languages_id'], 'integer');
   $category = $db->Execute($sql);
 
   if (isset($cPath) && strpos($cPath, '_'))
@@ -80,13 +80,13 @@ if ($category_depth == 'nested')
     {
       $sql = "SELECT count(*) AS total
               FROM   " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd
-              WHERE      c.parent_id = :parentID 
+              WHERE      c.parent_id = :parentID
               AND        c.categories_id = cd.categories_id
               AND        cd.language_id = :languagesID
               AND        c.categories_status= '1'";
 
-      $sql = $db->bindVars($sql, ':parentID', $category_links[$i], 'integer'); 
-      $sql = $db->bindVars($sql, ':languagesID', $_SESSION['languages_id'], 'integer'); 
+      $sql = $db->bindVars($sql, ':parentID', $category_links[$i], 'integer');
+      $sql = $db->bindVars($sql, ':languagesID', $_SESSION['languages_id'], 'integer');
       $categories = $db->Execute($sql);
 
       if ($categories->fields['total'] < 1)
@@ -96,13 +96,13 @@ if ($category_depth == 'nested')
         $categories_query = "SELECT c.categories_id, cd.categories_name, c.categories_image, c.parent_id
                              FROM   " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd
                              WHERE      c.parent_id = :parentID
-                             AND        c.categories_id = cd.categories_id 
-                             AND        cd.language_id = :languagesID 
-                             AND        c.categories_status= '1' 
+                             AND        c.categories_id = cd.categories_id
+                             AND        cd.language_id = :languagesID
+                             AND        c.categories_status= '1'
                              ORDER BY   sort_order, cd.categories_name";
 
         $categories_query = $db->bindVars($categories_query, ':parentID', $category_links[$i], 'integer');
-        $categories_query = $db->bindVars($categories_query, ':languagesID', $_SESSION['languages_id'], 'integer'); 
+        $categories_query = $db->bindVars($categories_query, ':languagesID', $_SESSION['languages_id'], 'integer');
         break; // we've found the deepest category the customer is in
       }
     }
@@ -116,7 +116,7 @@ if ($category_depth == 'nested')
                          ORDER BY   sort_order, cd.categories_name";
 
     $categories_query = $db->bindVars($categories_query, ':parentID', $current_category_id, 'integer');
-    $categories_query = $db->bindVars($categories_query, ':languagesID', $_SESSION['languages_id'], 'integer'); 
+    $categories_query = $db->bindVars($categories_query, ':languagesID', $_SESSION['languages_id'], 'integer');
   }
   $categories = $db->Execute($categories_query);
   $number_of_categories = $categories->RecordCount();
@@ -200,8 +200,6 @@ if ($category_depth == 'nested')
   $tpl_page_body = 'tpl_index_default.php';
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
-
-
 // bof modified for Short Description for Categories
 $current_categories_description = "";
 $current_categories_description_sub = "";
@@ -219,9 +217,9 @@ if ($categories_description_lookup->RecordCount() > 0) {
   $current_categories_description_sub = $categories_description_lookup->fields['categories_description_sub'];
 }
 // eof modified for Short Description for Categories
+$zco_notifier->notify('NOTIFY_HEADER_INDEX_MAIN_TEMPLATE_VARS_PAGE_BODY', NULL, $tpl_page_body);
 
 require($template->get_template_dir($tpl_page_body, DIR_WS_TEMPLATE, $current_page_base,'templates'). '/' . $tpl_page_body);
 
 // This should be last line of the script:
-$zco_notifier->notify('NOTIFY_HEADER_END_INDEX_MAIN_TEMPLATE_VARS');
-?>
+$zco_notifier->notify('NOTIFY_HEADER_END_INDEX_MAIN_TEMPLATE_VARS', NULL, $current_categories_description);
