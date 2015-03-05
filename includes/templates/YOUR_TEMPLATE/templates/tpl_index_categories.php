@@ -88,6 +88,7 @@ if ($current_categories_description_sub != '') {
 // categories_description_sub
     if ($current_categories_description_sub != '') {
 ?>
+<br class="clearBoth" />
 <a name="descSub"></a>
 <div id="categoryDescriptionSub" class="catDescContent"><?php echo $current_categories_description_sub;  ?></div>
 <?php } // categories_description_sub ?>
