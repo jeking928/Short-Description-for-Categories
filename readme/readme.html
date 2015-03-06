@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta name="ROBOTS" content="nofollow,noindex">
+<meta name="ROBOTS" content="noarchive">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="content-language" content="en">
+<meta name="author" content="C Jones Over the Hill Web Consulting (http://overthehillweb.com)">
+<meta name="keywords" content="button, buttons, generator, construction, kit, Zen Cart, multi-language, icons, online-shop">
+<meta name="description" content="To allow admin to declare categories (and all products within) as hidden, to one degree or another. This was designed for a very specific purpose, so its usefulness in your situation is up to you to determine.">
+<title>Short Description for Categories 1.4</title>
+<link rel="stylesheet" type="text/css" href="includes/css/stylesheet.css">
+<script type="text/javascript" src="includes/jscript/jscript_tabs.js"></script>
+</head>
+<body>
+<div id="wrapper">
+  <h2>Short Description for Categories 1.4</h2>
+  <p>Support thread: <a href="http://www.zen-cart.com/showthread.php?61114-Short-Description-for-Categories-have-a-description-above-amp-below-product-listings" target="_blank">http://www.zen-cart.com/showthread.php?61114-Short-Description-for-Categories-have-a-description-above-amp-below-product-listings</a><br>
+    Download link: <a href="http://www.zen-cart.com/downloads.php?do=file&id=355" target="_blank">http://www.zen-cart.com/downloads.php?do=file&id=355</a></p>
+  <div id="slidetabsmenu" style="display: none;">
+    <ul>
+      <li> <a onClick="expandcontent('sc1', this)" href="javascript:void(0)"><span>Purpose &amp; Aim</span></a></li>
+      <li> <a onClick="expandcontent('sc2', this)" href="javascript:void(0)"><span>Installation</span></a></li>
+      <li> <a onClick="expandcontent('sc3', this)" href="javascript:void(0)"><span>Usage</span></a></li>
+      <li> <a onClick="expandcontent('sc4', this)" href="javascript:void(0)"><span>Files</span></a></li>
+      <li> <a onClick="expandcontent('sc5', this)" href="javascript:void(0)"><span>Credits &amp; History</span></a></li>
+      <li> <a onClick="expandcontent('sc6', this)" href="javascript:void(0)"><span>License</span></a></li>
+    </ul>
+  </div>
+  <br style="clear: both;">
+  
+  <!--Begin tabcontainer-->
+  <div id="tabcontentcontainer"> 
+    
+    <!--Begin sc1-->
+    <div class="tabcontent" id="sc1" style="display: block;">
+      <div class="textcontent">
+        <h3>PURPOSE &amp; AIM</h3>
+        <p>Basically this allows you to SPLIT your category descriptions into two parts. One part comes before any products or subcategories (as a normal zen cart install does), and another part comes AFTER any products or subcategories. This mod also places a &quot;more info...&quot; link directly after the first description, so your customers can &quot;jump&quot; down to the secondary description.</p>
+        <p>This add on will be useful for people who have LENGTHY category descriptions, and who don't wish to force their customers to scroll down to find the products or subcategories.</p>
+        <p>If there is NO secondary category description, there will be no &quot;more info...&quot; link. You are also able to adjust the &quot;more info...&quot; text via a language file, and you can remove it all together if you'd prefer not to have that link.</p>
+        <p>Ready to get started? Just follow the steps in the installation tab</p>
+        <p>Any questions, just hit the forums at the support link in the header.</p>
+        <strong>!!READ EVERYTHING!!</strong></div>
+    </div>
+    <!--End sc1--> 
+    
+    <!--Begin sc2-->
+    <div class="tabcontent" id="sc2" style="display: block;">
+      <div class="textcontent">
+        <h3>INSTALLATION </h3>
+        <p></p>
+        <p><strong>!!!!!BACKUP YOUR STORE BEFORE YOU BEGIN!!!!!</strong></p>
+        <p>This version is specifically for Zen Cart 1.5.4 If you are using an older version, you MUST download and use the apprporiate older version.</p>
+        <div class="regularlist">
+          <p><strong>New Installation</strong></p>
+          <ol>
+            <li>Unzip the package to your local hard drive.</li>
+            <li>Rename the <strong>YOUR_TEMPLATE</strong> and <strong>YOUR_ADMIN</strong> folders to match the name of your shop's template and admin directories.</li>
+            <li>Use the included sql file to update your database (adds a new row to the categories_description table). Copy and paste the contents into the text box at Tools&gt;Install SQL Patches. Then click 'send'.</li>
+            <li>There are two core overrides for this mod, as they have no override folder. If you have already modified these files, you will need to merge the changes to these files here into your version of these files. Make a backup of your current files before editing and replacing them. The two core overrides for this plugin are:<br>
+              <ul>
+                <li>admin/categories.php</li>
+                <li>includes/modules/pages/index/main_template_vars.php</li>
+              </ul>
+            </li>
+            <li>Upload the files to your website, retaining the folder structure.</li>
+            <li>DONE! Now when you go to add a category or edit a category in your admin, there will be a new section where you can enter the description that goes below the category or product listings.</li>
+            <li>(OPTIONAL) Add this to your stylesheet.css (color and padding for the &quot;more info....&quot; text)</li>
+            <ul>
+              <li>#descSubLink {<br />
+                padding-left:.7em;<br />
+                color:#990000;<br />
+                }</li>
+            </ul>
+            <li>(OPTIONAL) You can adjust the &quot;more info...&quot; text in includes/languages/english/extra_definitions/YOUR_TEMPLATE/category_description_sub_defines.php<br>
+            </li>
+          </ol>
+        </div>
+        <p><strong>Un-Installation</strong></p>
+        <p>Reverse everything you did. Remove all the files and undo the edits from the modified core files. Better yet, replace with the backups you created before installing this plugin. 
+          It is best to simply keep a good pre-install backup set so you can restore if you decide this isn't what you want.</p>
+      </div>
+    </div>
+    <!--End sc2--> 
+    
+    <!--Begin sc3-->
+    <div class="tabcontent" id="sc3" style="display: block;">
+      <div class="textcontent">
+        <h3>USAGE</h3>
+        <br>
+        <div class="regularlist">
+          <p>Very simple. If you want to split a category descritiption, go to the category in the admin and fill in the 'Categories Description' with the text you want above the products/sub-categories and fill in the 'Categories Description Below Categories' box with the text you want below the products/sub-categories.</p>
+        </div>
+      </div>
+    </div>
+    <!--End sc3--> 
+    
+    <!--Begin sc4-->
+    <div class="tabcontent" id="sc4" style="display: block;">
+      <div class="textcontent">
+        <h3>FILES</h3>
+        <div class="regularlist">
+          <p><strong>Required Install Files</strong></p>
+          <ul>
+            <li>admin/categories.php<strong> ***CORE FILE OVERWRITE***</strong></li>
+            <li>admin/includes/functions/extra_functions/categories_description_sub.php</li>
+            <li>admin/includes/languages/english/extra_definitions/categories_description_sub.php</li>
+            <li>includes/languages/english/extra_definitions/YOUR_TEMPLATE/category_description_sub_defines.php<br>
+            </li>
+            <li>includes/modules/pages/index/main_template_vars.php<strong> ***CORE FILE OVERWRITE***</strong><br>
+            </li>
+            <li>includes/templates/YOUR_TEMPLATE/templates/tpl_index_categories.php<br>
+            </li>
+            <li>includes/templates/YOUR_TEMPLATE/templates/tpl_index_product_list.php</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--End sc4--> 
+    
+    <!--Begin sc5-->
+    <div class="tabcontent" id="sc5" style="display: block;">
+      <div class="textcontent">
+        <h3>CREDITS &amp; HISTORY</h3>
+        <p>&nbsp;</p>
+        <div class="regularlist">
+          <h4>Change Log</h4>
+          <div class="regularlist">
+            <p>1.4 - 03/05/2015 by jeking</p>
+            <ul>
+              <li>Updated for Zen Cart 1.5.4</li>
+            </ul>
+            <p>1.3 - 01/25/2013 by by Ryk</p>
+            <ul>
+              <li>Updated for Zen Cart 1.5.3</li>
+            </ul>
+            1.2 - 09/10/2007 by jettrue<br>
+            <ul>
+              <li>update to admin/categories.php (removed seo urls code)</li>
+            </ul>
+            1.1 - 08/18/2007 by jettrue<br>
+            <ul>
+              <li>updates to admin/categories.php (support for FCKeditor)</li>
+              <li>includes/templates/YOUR_TEMPLATE/templates/tpl_index_product_list.php</li>
+              <li>includes/templates/YOUR_TEMPLATE/templates/tpl_index_index_categories.php</li>
+            </ul>
+            1.0 - 03/24/2007 by jettrue<br>
+            <ul>
+              <li>initial release</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End sc5--> 
+    
+    <!--Begin sc6-->
+    <div class="tabcontent" id="sc6" style="display: block;">
+      <div class="textcontent">
+        <h3>LICENSE</h3>
+        <p>hideCategories 2.0 is released under the General Public License (see <a href="LICENSE.txt">LICENSE.txt)</a></p>
+        <p>This script is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p>
+        <p>Always backup your shop and database before making changes.</p>
+      </div>
+    </div>
+    <!--End sc6--> 
+    
+  </div>
+  <!--end tabcontainer--> 
+  <script type="text/javascript">document.getElementById('sc2').style.display = 'none';</script> 
+  <script type="text/javascript">document.getElementById('sc3').style.display = 'none';</script> 
+  <script type="text/javascript">document.getElementById('sc4').style.display = 'none';</script> 
+  <script type="text/javascript">document.getElementById('sc5').style.display = 'none';</script> 
+  <script type="text/javascript">document.getElementById('sc6').style.display = 'none';</script> 
+  <script type="text/javascript">ShowTabs()</script> 
+  <script type="text/javascript">
+// We only show the tab links if JavaScript is available/active.
+<!--
+if (document.getElementById("slidetabsmenu") != null) {
+  document.getElementById('slidetabsmenu').style.display = "block";
+}
+//-->
+</script><br>
+  <br>
+  <p><a href="http://validator.w3.org/check/referer" target="_blank"><img src="http://www.w3.org/Icons/valid-html401-blue.gif" alt="W3C validation logo" border="0" height="31" width="88"></a> <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"><img src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!" border="0" height="31" width="88"></a></p>
+  <br>
+  <br>
+</div>
+</body>
+</html>
